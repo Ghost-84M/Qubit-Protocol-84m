@@ -194,7 +194,7 @@ impl Default for NodeConfig {
 impl Default for NetworkConfig {
     fn default() -> Self {
         Self {
-            listen_address: "/ip4/0.0.0.0/tcp/8545".to_string(),
+            listen_address: "/ip4/0.0.0.0/tcp/6000".to_string(),
             bootstrap_peers: vec![],
             max_peers: 50,
             max_inbound_peers: 30,
@@ -264,7 +264,7 @@ impl Default for RpcConfig {
     fn default() -> Self {
         Self {
             enabled: true,
-            listen_address: "127.0.0.1:8546".to_string(),
+            listen_address: "0.0.0.0:8080".to_string(),
             cors_allowed_origins: vec!["*".to_string()],
             max_connections: 100,
             request_timeout: 30,
