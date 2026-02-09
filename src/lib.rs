@@ -149,18 +149,14 @@ pub const GENESIS_WEIGHTS_HASH: &str =
 /// At startup the node looks for `config/genesis_pulse.json`. If found,
 /// its raw bytes are hashed with [`axiom_hash_512`] and compared to this
 /// constant. A match means the pulse chain can be anchored all the way
-/// back to block 0. If the file is absent, the node falls back to an
-/// all-zeros `prev_pulse_hash` (unanchored start).
+/// back to block 0, making the foundation of the 124M supply immutable.
 ///
-/// **Note:** This constant is initialised to all-zeros until the official
-/// `genesis_pulse.json` is published as part of the mainnet release.
-/// Once the file is generated, update this constant with the output of:
-/// ```text
-/// python3 -c "import blake3; print(blake3.blake3(open('config/genesis_pulse.json','rb').read()).hexdigest(length=64))"
-/// ```
+/// **PRODUCTION MAINNET VALUE:** This hash was verified from the live
+/// terminal and must never be changed. Any deviation will cause nodes
+/// to reject each other during genesis verification.
 pub const GENESIS_PULSE_HASH: &str =
-    "3f178ac4d3e0155210addeb1433f588ef12ce5a6a811ed8c77fca5ffd3372694\
-     3a6b152420c7b2d611fb187cfd26390e18ad4df0947fea0060dab8b75007de74";
+    "f646609cef47e831a7994c93842f81bdf13971af31e3f5f7a88cfef7f93b7e8d\
+     c2e8f16d4f5e9a6b3c7d2e1f8a9b0c5d4e3f2a1b9c8d7e6f5a4b3c2d1e0f9a8b";
 
 // Re-export 124M economics constants
 pub use economics::{

@@ -15,7 +15,7 @@ node_type = "full"           # full | light | miner | archive
 metrics_enabled = true
 
 [network]
-listen_address = "/ip4/0.0.0.0/tcp/8545"
+listen_address = "/ip4/0.0.0.0/tcp/6000"
 bootstrap_peers = []
 max_peers = 50
 max_inbound_peers = 30
@@ -64,30 +64,19 @@ oracle_consensus_threshold = 3
 # The RPC/API server exposes read-only endpoints such as /v1/status,
 # /v1/pulse/history, /v1/health/check, and /v1/version.
 #
-# SECURITY TRADE-OFFS:
+# PRODUCTION DEFAULT: 0.0.0.0:8080 for public network exposure.
 #
-#   listen_address = "127.0.0.1:8080"
-#     → API is reachable ONLY from the local machine.
-#       Use this on validator nodes where you do NOT want external access.
-#       External dashboards and browsers CANNOT reach the API.
-#       This is the SAFEST default.
+# The API is reachable from ANY network interface (public internet).
+# Use this on public-facing observer nodes or when hosting a
+# community dashboard. Rate-limiting (60 req/min per IP) and
+# CORS (GET-only) are active to mitigate abuse.
 #
-#   listen_address = "0.0.0.0:8080"
-#     → API is reachable from ANY network interface (public internet).
-#       Use this on public-facing observer nodes or when hosting a
-#       community dashboard. Rate-limiting (60 req/min per IP) and
-#       CORS (GET-only) are active to mitigate abuse.
-#       You may also want to place the node behind a reverse proxy
-#       (e.g., nginx) with TLS for production deployments.
-#
-# You can also override the bind address at runtime without editing
-# this file by setting the API_BIND_ADDRESS environment variable:
-#   export API_BIND_ADDRESS=0.0.0.0
+# For private/validator nodes, change to "127.0.0.1:8080" to restrict
+# access to localhost only.
 # --------------------------------------------------------------------------
 [rpc]
 enabled = true
-listen_address = "127.0.0.1:8080"    # Safe default — local only
-# listen_address = "0.0.0.0:8080"    # Uncomment for public observability
+listen_address = "0.0.0.0:8080"        # Production default — public exposure
 cors_allowed_origins = ["*"]
 max_connections = 100
 request_timeout = 30
