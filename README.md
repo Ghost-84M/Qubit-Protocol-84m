@@ -18,25 +18,39 @@ AXIOM is a production-grade, privacy-preserving blockchain with:
 ---
 
 ## ⚡ 60-Second Getting Started
-
 ```bash
-# 1. Clone & build (2 minutes)
+# 1. Clone & build (2-5 minutes)
 git clone https://github.com/Ghost-84M/Axiom-Protocol.git
 cd Axiom-Protocol
 cargo build --release
 
-# 2. Run the node (either method works)
-cargo run --release              # easiest
-./target/release/axiom-node      # direct binary
+# 2. Connect to the active bootstrap node
+export AXIOM_BOOTSTRAP_PEERS=/ip4/34.10.172.207/tcp/6000/p2p/12D3KooWFomvGbGsjxWvEvWGuszqRziBuCo6rMnqBXwur1TeNAQ3
 
-# 3. Verify syncing (in another terminal)
-watch -n 5 './target/release/axiom-node status'
+# 3. Run the node
+./target/release/axiom-node
+
+# 4. Check your wallet balance (in another terminal)
+cd Axiom-Protocol
+./target/release/axiom-wallet balance
+
+# 5. View supply statistics
+./target/release/axiom-supply
 ```
 
-**That's it!** Your node automatically connects, syncs the blockchain, and maintains consensus through the Sovereign Guardian with integrated AI security.
+**What you'll see:**
+- Node connects to bootstrap peer automatically
+- Blockchain syncs (watch Height increase: 0 → 235+)
+- Connected Peers: 1+ (network is live!)
+- AI Shield: ACTIVE (neural guardian monitoring)
 
----
-
+**Available commands:**
+```bash
+./target/release/axiom-wallet show      # View your wallet address
+./target/release/axiom-wallet balance   # Check your balance
+./target/release/axiom-wallet send <address> <amount> <fee>  # Send transaction
+./target/release/axiom-supply          # View token economics
+```
 
 ## 🚀 v4.2.0: Production Audit & Cleanup Release
 
