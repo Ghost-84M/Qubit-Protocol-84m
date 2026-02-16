@@ -12,12 +12,23 @@
 # ========================================
 # AXIOM BOOTSTRAP NODES (February 2026)
 # ========================================
+# Active bootstrap node - Verified working as of Feb 16, 2026
+# Node Status: ACTIVE ✅
+# Location: Google Cloud Platform (us-central1)
+# Current Height: 235+ blocks
+# Network: Mainnet
 
-# Seed diversity: multiple bootstrap nodes across providers to prevent
-# single-point-of-failure (centralization).
 bootnodes = [
-    "/ip4/34.10.172.20/tcp/6000",   # Primary GCP Node
-    "/ip4/34.160.111.145/tcp/7000", # GCP Node 2
-    "/ip4/51.15.23.200/tcp/7000",   # Scaleway/OVH Node
-    "/ip4/3.8.120.113/tcp/7000",    # AWS EC2 Node
+    "/ip4/34.10.172.207/tcp/6000/p2p/12D3KooWFomvGbGsjxWvEvWGuszqRziBuCo6rMnqBXwur1TeNAQ3",   # Primary GCP Node (ACTIVE)
 ]
+
+# Previous bootstrap nodes (currently offline - Feb 16, 2026):
+# "/ip4/34.10.172.20/tcp/6000",       # Offline - connection timeout
+# "/ip4/34.160.111.145/tcp/7000",     # Offline - connection timeout
+# "/ip4/51.15.23.200/tcp/7000",       # Offline - connection timeout
+# "/ip4/3.8.120.113/tcp/7000",        # Offline - connection timeout
+
+# To add your node as a bootstrap node:
+# 1. Set AXIOM_EXTERNAL_IP to your public IP
+# 2. Start node and get your PeerId
+# 3. Add: "/ip4/YOUR_PUBLIC_IP/tcp/6000/p2p/YOUR_PEER_ID"
